@@ -3,6 +3,9 @@
 import { Component } from 'react';
 import Arry from './components/Arry';
 import Employee from './components/Employee'
+import User from './components/User'
+import Posts from './components/Posts';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // function App() {
 //   return (
@@ -30,10 +33,12 @@ export default class App extends Component{
   render(){
     return (
       <div>
-      <Arry />
+      {/* <Arry />
       <hr/>
       <hr/>
-      <Employee/>
+      <Employee/> 
+      <User />*/}
+      <Posts />
     </div> 
     )       
   };

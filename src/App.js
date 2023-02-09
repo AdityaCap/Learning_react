@@ -40,8 +40,9 @@ export default class App extends Component{
       <Employee/> 
       
       <Posts />
-      <Todo/>*/}
-      <User />
+      
+      <User />*/}
+      <Todo/>
     </div> 
     )       
   };

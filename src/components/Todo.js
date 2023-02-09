@@ -35,7 +35,7 @@ export default class Todo extends Component{
                                     
                                     <td>{t.id}</td>
                                     <td>{t.title}</td>
-                                    <td>{t.completed}</td>
+                                    <td>{t.completed.toString()}</td>
                                     
                                 </tr>
                             ))}

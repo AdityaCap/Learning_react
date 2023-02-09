@@ -7,8 +7,7 @@ export default class Arry extends Component{
         super(); //call Parent component constructor pls... 
         this.state={
             nums: [11,2,13,5,7,6,4,8] 
-
-        }
+        }      
     }
 
     render(){
@@ -20,7 +19,29 @@ export default class Arry extends Component{
                        <li key={this.i++}> {e} </li>
                     ))
                 }
+                <br />
+                    <button onClick={()=>(this.sortArry('ASC'))}>SORT-ASC</button>
+                    <button onClick={()=>(this.sortArry('DESC'))}>SORT_DESC</button>
             </div>
         );
     }
+    sortArry(direction){
+        let temp=[];
+        switch(direction){
+            case 'ASC':
+                temp = this.state.nums.sort((a, b) => a - b); 
+                break; 
+            case 'DESC':
+                temp = this.state.nums.sort((a, b) => b - a); 
+                break;
+            default:
+                break;
+        }
+
+        this.setState({
+            nums: temp
+        });
+    }
+    
+
 }

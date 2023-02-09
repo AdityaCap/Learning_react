@@ -2,6 +2,7 @@
 //import './App.css';
 import { Component } from 'react';
 import Arry from './components/Arry';
+import Employee from './components/Employee'
 
 // function App() {
 //   return (
@@ -30,6 +31,9 @@ export default class App extends Component{
     return (
       <div>
       <Arry />
+      <hr/>
+      <hr/>
+      <Employee/>
     </div> 
     )       
   };

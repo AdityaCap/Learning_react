@@ -6,6 +6,7 @@ import Employee from './components/Employee'
 import User from './components/User'
 import Posts from './components/Posts';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Todo from './components/Todo';
 
 // function App() {
 //   return (
@@ -37,8 +38,10 @@ export default class App extends Component{
       <hr/>
       <hr/>
       <Employee/> 
-      <User />*/}
+      
       <Posts />
+      <Todo/>*/}
+      <User />
     </div> 
     )       
   };

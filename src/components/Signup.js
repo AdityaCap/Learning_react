@@ -8,7 +8,8 @@ export default class Signup extends Component{
                 name:'',
                 email:'',
                 password: ''
-            }
+            },
+            errors:{}
         }
     }
     componentDidMount(){
@@ -23,7 +24,9 @@ export default class Signup extends Component{
                         name='name'
                         value={this.state.user.name}
                         onChange={this.changeHandler}
+                        
                     />
+                    <span style={{color:'red'}}>{this.state.errors['name']}</span>
                     <br/><br/>
                     <label>Enter your email</label>
                     <input type='text'
@@ -31,6 +34,7 @@ export default class Signup extends Component{
                         value={this.state.user.email}
                         onChange={this.changeHandler}
                     />
+                    <span style={{color:'red'}}>{this.state.errors['email']}</span>
                     <br/><br/>
                     <label>Enter your password</label>
                     <input type='password'
@@ -38,10 +42,10 @@ export default class Signup extends Component{
                             value={this.state.user.password}
                             onChange={this.changeHandler}
                     />
+                    <span style={{color:'red'}}>{this.state.errors['password']}</span>
                     <br/><br/>      
-                    <button onClick={this.onSignup}>Sign Up</button>       
+                    <button onClick={this.onSignup}>Sign Up</button>      
                                 
-                               
             </div>
         );
     }
@@ -54,6 +58,39 @@ export default class Signup extends Component{
         });
     }
     onSignup=()=>{
-        console.log(this.state.user)
+        
+        //Validate User input
+        if(this.handleValidation()){
+            console.log(this.state.user);
+        }
+        else{
+            //Display errors
+            console.log('Validation not passed')
+        }
+
+    }
+    handleValidation(){
+        let name=this.state.user.name;
+        let email=this.state.user.email;
+        let password=this.state.user.password;
+        let formValid=true;
+        let tempErrors={}
+        if(!name){
+            formValid=false;
+            tempErrors['name']='Name cant be empty';
+        }
+        if(!email){
+            formValid=false;
+            tempErrors['email']='Email cant be empty';
+        }
+        if(!password){
+            formValid=false;
+            tempErrors['password']='Password wont be empty you Jackass';
+        }
+        this.setState({
+            errors:tempErrors
+        });
+        return formValid;
+
     }
 }

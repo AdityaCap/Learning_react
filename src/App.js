@@ -8,6 +8,9 @@ import Posts from './components/Posts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Todo from './components/Todo';
 import Signup from './components/Signup';
+import NavBar from './components/NavBar';
+import { Outlet, Route, Routes } from "react-router-dom";
+import PageNotFound from './PageNotFound';
 
 // function App() {
 //   return (
@@ -43,8 +46,19 @@ export default class App extends Component{
       <Posts />
       
       <User />
-      <Todo/>*/}
-      <Signup />
+      <Todo/>
+      <Signup />*/}
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Arry/>} />
+        <Route path ='/Employee' element={<Employee/>}/>
+        <Route path ='/Posts' element={<Posts/>}/>
+        <Route path ='/Signup' element={<Signup/>}/>
+        <Route path ='/User' element={<User/>}/>
+        <Route path ='/Todo' element={<Todo/>}/>
+        <Route path ='*' element={<PageNotFound/>}/>
+        
+      </Routes>
     </div> 
     )       
   };

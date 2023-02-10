@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Component } from "react";
 
 export default class Signup extends Component{
@@ -9,7 +10,8 @@ export default class Signup extends Component{
                 email:'',
                 password: ''
             },
-            errors:{}
+            errors:{},
+            msg: ''
         }
     }
     componentDidMount(){
@@ -19,6 +21,7 @@ export default class Signup extends Component{
         return(
             <div>
                 <h2>Signup Form </h2>
+                <span>{this.state.msg}</span> <br />
                     <label>Enter your name</label>
                     <input type='text'
                         name='name'
@@ -34,7 +37,7 @@ export default class Signup extends Component{
                         value={this.state.user.email}
                         onChange={this.changeHandler}
                     />
-                    <span style={{color:'red'}}>{this.state.errors['email']}</span>
+                    <span style={{color:'purple'}}>{this.state.errors['email']}</span>
                     <br/><br/>
                     <label>Enter your password</label>
                     <input type='password'
@@ -42,7 +45,7 @@ export default class Signup extends Component{
                             value={this.state.user.password}
                             onChange={this.changeHandler}
                     />
-                    <span style={{color:'red'}}>{this.state.errors['password']}</span>
+                    <span style={{color:'pink'}}>{this.state.errors['password']}</span>
                     <br/><br/>      
                     <button onClick={this.onSignup}>Sign Up</button>      
                                 
@@ -62,6 +65,7 @@ export default class Signup extends Component{
         //Validate User input
         if(this.handleValidation()){
             console.log(this.state.user);
+            this.postUser(this.state.user);
         }
         else{
             //Display errors
@@ -93,4 +97,19 @@ export default class Signup extends Component{
         return formValid;
 
     }
+    async postUser(person){
+        try {
+            const response = axios.post("http://localhost:1773/person/add", person);
+            const data = (await response).data;
+            console.log('API success');
+            console.log(data);
+          } catch (error) {
+            console.error(error.response.data.msg);
+            this.setState({
+                msg: error.response.data.msg
+            })
+          }
+    }
+    
+    
 }

@@ -7,6 +7,7 @@ import User from './components/User'
 import Posts from './components/Posts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Todo from './components/Todo';
+import Signup from './components/Signup';
 
 // function App() {
 //   return (
@@ -41,8 +42,9 @@ export default class App extends Component{
       
       <Posts />
       
-      <User />*/}
-      <Todo/>
+      <User />
+      <Todo/>*/}
+      <Signup />
     </div> 
     )       
   };
